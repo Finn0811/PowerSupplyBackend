@@ -52,8 +52,8 @@ def rest_measurements(req, *args, **kwargs):
     if req.method == 'GET':
         limit = kwargs['limit']
 
-        power_supplies = Measurement.objects.all().order_by('-timestamp')[:limit]
-        serializer = RestMeasurementSerializer(power_supplies, many=True)
+        measurements = Measurement.objects.all().order_by('-timestamp')[:limit]
+        serializer = RestMeasurementSerializer(measurements, many=True)
         return Response(serializer.data)
 
     if req.method == 'POST':
